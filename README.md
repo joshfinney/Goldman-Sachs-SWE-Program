@@ -76,7 +76,7 @@ python3 main.py
 This command runs the password cracking script, which processes the input files and displays the cracked passwords in a well-formatted table.
 
 ## 🚶🏽 Walkthrough
-![]()
+![](https://github.com/joshfinney/Goldman-Sachs-SWE-Program/blob/main/walkthrough.gif)
 
 ## 📋 Memo
 
