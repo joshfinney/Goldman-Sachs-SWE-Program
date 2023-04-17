@@ -10,6 +10,12 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 def get_file_to_crack() -> str:
+    """
+    Retrieve the path to the file containing password hashes.
+    
+    Returns:
+        str: The absolute path to the cracked.txt file or the user-defined file path.
+    """
     hashes = os.path.abspath('cracked.txt')
     if not os.path.isfile(hashes):
         hashes = input("Word list file: ")
@@ -20,12 +26,24 @@ def get_file_to_crack() -> str:
 
 
 def list_current_directory_files() -> None:
+    """
+    List all files in the current directory.
+    """
     curr_dir = os.listdir()
     for f in curr_dir:
         print(f)
 
 
 def read_db_hashes(filename: str) -> List[str]:
+    """
+    Read database hashes from the specified file.
+    
+    Args:
+        filename (str): The name of the file containing the hashes.
+    
+    Returns:
+        List[str]: A list of hashes read from the file.
+    """
     while True:
         try:
             with open(filename) as f:
@@ -38,6 +56,13 @@ def read_db_hashes(filename: str) -> List[str]:
 
 
 def run_hashcat(output_file_name: str, hashes: str) -> None:
+    """
+    Execute the hashcat command with the provided arguments.
+    
+    Args:
+        output_file_name (str): The name of the output file containing parsed hashes.
+        hashes (str): The path to the file containing password hashes.
+    """
     logging.info("\nHere's what was found...\n")
     pot_file = "outfile.txt"
     with open(pot_file, "w") as pot:
@@ -46,6 +71,12 @@ def run_hashcat(output_file_name: str, hashes: str) -> None:
 
 
 def parse_cracked_hashes() -> List[Tuple[str, str]]:
+    """
+    Parse the cracked hashes from the outfile.txt file.
+    
+    Returns:
+        List[Tuple[str, str]]: A list of tuples containing the username and cracked password hash.
+    """
     with open("outfile.txt") as new_f:
         out_content = [tuple(line.strip().split(":")) for line in new_f.readlines()]
 
@@ -53,6 +84,12 @@ def parse_cracked_hashes() -> List[Tuple[str, str]]:
 
 
 def create_table() -> Table:
+    """
+    Create a table to display cracked passwords.
+    
+    Returns:
+        Table: A Rich Table object with columns for the username and password.
+    """
     table = Table(title="Cracked Passwords")
     table.add_column("Username", justify="left")
     table.add_column("Password", justify="left")
@@ -61,6 +98,9 @@ def create_table() -> Table:
 
 
 def main() -> None:
+    """
+    The main function for the password cracking script.
+    """
     hashes = get_file_to_crack()
     while True:
         list_current_directory_files()
