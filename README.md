@@ -1,4 +1,4 @@
-# 🌍 Goldman Sachs Software Engineering Virtual Experience Program
+# 🏦 Goldman Sachs Software Engineering Virtual Experience Program
 
 This program, offered by Forage, focuses on the analysis and enhancement of password security policies in an organization. The project involves cracking a simulated leaked password database, assessing the organization's existing security measures, and proposing strategies to improve password protection. By understanding the techniques used by hackers to bypass security controls, we can recommend effective solutions to strengthen the organization's password policies.
 
